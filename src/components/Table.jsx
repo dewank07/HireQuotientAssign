@@ -1,6 +1,14 @@
 import React, { useEffect } from "react";
 
-const Table = ({ data, posts, handleDelete, setDataKey, setId } = props) => {
+const Table = ({
+  data,
+  posts,
+  handleDelete,
+  setDataKey,
+  setId,
+  isChecked,
+  setIsChecked,
+} = props) => {
   useEffect(() => {
     // console.log("table", data);
   }, [data, posts]);
@@ -35,7 +43,11 @@ const Table = ({ data, posts, handleDelete, setDataKey, setId } = props) => {
                 <input
                   type='checkbox'
                   className='checkbox'
-                  onChange={() => handleSelectAll()}
+                  checked={isChecked}
+                  onClick={() => {
+                    setIsChecked(true);
+                    handleSelectAll();
+                  }}
                 />
                 Delete 10 entries
               </label>

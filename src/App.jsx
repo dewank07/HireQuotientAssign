@@ -14,6 +14,7 @@ function App() {
   const [currentPosts, setCurrentPosts] = useState([]);
   const [back, setBack] = useState([]);
   const [id, setId] = useState();
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -63,6 +64,8 @@ function App() {
       const updatedList = back.filter((item) => !dataKey.includes(item["id"]));
       setBack(updatedList);
     });
+    setDataKey([]);
+    setIsChecked(false);
   };
   const handleDelete = (idd) => {
     const newArray = back.filter((item) => item["id"] !== idd);
@@ -89,6 +92,8 @@ function App() {
               setDataKey={setDataKey}
               posts={posts}
               setId={setId}
+              isChecked={isChecked}
+              setIsChecked={setIsChecked}
             />
           </div>
           <Pagination
